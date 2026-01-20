@@ -28,8 +28,8 @@ export default async function (body, headers, env) {
     const event = {
         id: body.id || null,
         name: body.name || null,
-        fbName: body.fbName || null,
-        gaName: body.gaName || null,
+        nameFb: body.nameFb || null,
+        nameGa: body.nameGa || null,
         hashedUserPhone: body.userPhone ? await sha256(body.userPhone) : null,
         hashedUserEmail: body.userEmail ? await sha256(body.userEmail) : null,
         cookieFbp: body.cookieFbp || null,
@@ -49,13 +49,13 @@ export default async function (body, headers, env) {
 
     const tasks = []
 
-    if (env.FB_PIXEL_ID && env.FB_ACCESS_TOKEN && event.fbName && event.clientIp) {
+    if (env.FB_PIXEL_ID && env.FB_ACCESS_TOKEN && event.nameFb && event.clientIp) {
         tasks.push(handleFbEvent(event, env))
     } else {
         console.warn('Facebook event skipped')
     }
 
-    if (env.GA_MEASUREMENT_ID && env.GA_ACCESS_TOKEN && event.gaName && event.clientIp) {
+    if (env.GA_MEASUREMENT_ID && env.GA_ACCESS_TOKEN && event.nameGa && event.clientIp) {
         tasks.push(handleGaEvent(event, env))
     } else {
         console.warn('Google Analytics event skipped')

@@ -4,7 +4,7 @@ export default async function (event, env) {
     const payload = {
         data: [
             {
-                event_name: event.fbName,
+                event_name: event.nameFb,
                 event_id: event.id,
                 event_time: event.timestamp,
                 action_source: 'website',

@@ -9,7 +9,7 @@ export default async function (event, env) {
         },
         events: [
             {
-                name: event.gaName,
+                name: event.nameGa,
                 params: {
                     page_location: event.referrer,
                     page_referrer: event.referrer,
