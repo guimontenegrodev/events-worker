@@ -17,6 +17,8 @@ export default async function (body, headers, env) {
 
     if (!nameMap) return console.error('Event name is invalid')
 
+    console.info(`Event "${name}" received`)
+
     const timestamp = Math.floor(Date.now() / 1000)
 
     const referrer = headers['referer'] || null
