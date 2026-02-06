@@ -17,7 +17,7 @@ export default async function (body, headers, env) {
 
     if (!nameMap) return console.error('Event name is invalid')
 
-    console.info(`Event "${name}" received`)
+    console.log({ id, name })
 
     const timestamp = Math.floor(Date.now() / 1000)
 
